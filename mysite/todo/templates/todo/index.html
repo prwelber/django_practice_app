@@ -1,0 +1,15 @@
+{% if item_list %}
+  <ul>
+  {% for item in item_list %}
+    <li><a href="/todo/{{ item.id }}/">{{ item.item_text }}</a></li>
+    Done: {{ item.done }}
+    <br />
+    Due Date: {{ item.due_date }} 
+    <br />
+    <a href="{% url 'todo:edit' item.id %}">Edit this item</a>
+    <br /> <br />
+  {% endfor %}
+  </ul>
+{% else %}
+  <h3>No items have been added yet</h3>
+{% endif %}

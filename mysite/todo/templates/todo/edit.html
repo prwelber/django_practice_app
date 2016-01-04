@@ -1,0 +1,5 @@
+<h1>Edit Todo Item</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'todo:edit' item.id %}" method="post"></form>

@@ -1,0 +1,10 @@
+<a href="{% url 'todo:index' %}">Back</a>
+{# the above uses the url named index to create link back to index page #}
+
+<h1>{{ item.item_text }}</h1>
+
+{% if error_message %} <p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<p>Published: {{ item.pub_date }}</p>
+<p>Due: {{ item.due_date }}</p>
+<p>Done: {{ item.done }}</p>
