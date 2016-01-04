@@ -64,6 +64,13 @@ def new(request):
 
 def create(request):
     print(request.POST)
-    new_item = Item(item_text=request.POST['item_text'], pub_date=timezone.now(), due_date=timezone.now(), done=False)
+    new_item = Item(item_text=request.POST['item_text'], pub_date=timezone.now(), due_date=request.POST['due_date'], done=False)
     new_item.save()
+    return redirect('todo:index')
+
+
+def delete(request):
+    print(request.POST)
+    item = get_object_or_404(Item, pk=request.POST['delete_id'])
+    item.delete()
     return redirect('todo:index')

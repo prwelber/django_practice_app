@@ -9,6 +9,12 @@
     Created At: {{ item.pub_date }}
     <br />
     <a href="{% url 'todo:edit' item.id %}">Edit this item</a>
+    <br />
+    <form action="{% url 'todo:delete' %}" method="POST">
+      {% csrf_token %}
+      <input type="hidden" name="delete_id" value="{{ item.id }}">
+      <input type="submit" value="delete">
+    </form>
     <br /> <br />
   {% endfor %}
   </ul>
