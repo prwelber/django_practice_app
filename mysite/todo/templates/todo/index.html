@@ -4,7 +4,9 @@
     <li><a href="/todo/{{ item.id }}/">{{ item.item_text }}</a></li>
     Done: {{ item.done }}
     <br />
-    Due Date: {{ item.due_date }} 
+    Due Date: {{ item.due_date }}
+    <br />
+    Created At: {{ item.pub_date }}
     <br />
     <a href="{% url 'todo:edit' item.id %}">Edit this item</a>
     <br /> <br />
@@ -13,3 +15,4 @@
 {% else %}
   <h3>No items have been added yet</h3>
 {% endif %}
+<h3><a href="{% url 'todo:new' %}">Create new Todo item</a></h3>

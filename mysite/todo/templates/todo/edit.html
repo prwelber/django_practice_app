@@ -2,4 +2,13 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'todo:edit' item.id %}" method="post"></form>
+<form action="{% url 'todo:update' item.id %}" method="post">
+    {% csrf_token %}
+    <label for="item_text">Item Text</label>
+    <input type="text" value="{{ item.item_text }}" name="item_text" id="item_text" size="50"/><br /><br />
+    <h5>Item Status:</h5>
+    <input type="radio" name="done" value="True" />Completed <br />
+    <input type="radio" name="done" value="False" />Not Completed <br />
+    <input type="submit" value="Update Item">
+</form>
+

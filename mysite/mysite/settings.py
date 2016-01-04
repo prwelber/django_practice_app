@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'my_poll_app',
-        'USER': 'philipwelber',
+        'USER': 'Targeted123',
         'PASSWORD': os.environ['PASSWORD'],
         'HOST': 'localhost',
         'PORT': 5432,
@@ -88,7 +88,7 @@ DATABASES = {
     'todo': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'my_todo_app',
-        'USER': 'philipwelber',
+        'USER': 'Targeted123',
         'PASSWORD': os.environ['PASSWORD'],
         'HOST': 'localhost',
         'PORT': 5432,
