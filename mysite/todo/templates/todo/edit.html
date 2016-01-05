@@ -1,3 +1,5 @@
+<a href="{% url 'todo:index' %}">Home</a>
+
 <h1>Edit Todo Item</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -6,9 +8,11 @@
     {% csrf_token %}
     <label for="item_text">Item Text</label>
     <input type="text" value="{{ item.item_text }}" name="item_text" id="item_text" size="50"/><br /><br />
+    Due Date:
+    <input type="date" name="due_date" value="{{ date }}">
     <h5>Item Status:</h5>
-    <input type="radio" name="done" value="True" />Completed <br />
-    <input type="radio" name="done" value="False" />Not Completed <br />
+    Completed<input type="radio" name="done" value="True" /><br />
+    Not Completed<input type="radio" name="done" value="False" /><br />
     <input type="submit" value="Update Item">
 </form>
 

@@ -9,7 +9,8 @@ from .models import Item
 
 
 def index(request):
-    item_list = Item.objects.all()
+    # this orders the todo items by nearest due_date
+    item_list = Item.objects.order_by('due_date')
     # gets all the models
     # template = loader.get_template('todo/index.html')
     # load the template from template directory
@@ -38,20 +39,28 @@ def show(request, item_id):
 
 
 def edit(request, item_id):
+    print("edit view/route hit")
     item = get_object_or_404(Item, pk=item_id)
+    due_date = str(item.due_date)
+    due_date2 = due_date.split()[0]
+    due_date3 = due_date.split()[1][0:8]
+    date = due_date2 + "T" + due_date3
+    print(due_date)
+    print("formatted date: " + date)
     context = {
-        'item': item
+        'item': item,
+        'date': due_date2
     }
     return render(request, 'todo/edit.html', context)
 
 
 def update(request, item_id):
+
     print(request.POST)
     print(request.POST['done'])
     item = get_object_or_404(Item, pk=item_id)
-    print(item.done)
     item.item_text = request.POST['item_text']
-    item.save()
+    item.due_date = request.POST['due_date']
     item.done = request.POST['done']
     item.save()
     print(item.done)
